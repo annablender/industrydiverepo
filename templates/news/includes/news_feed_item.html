@@ -1,0 +1,16 @@
+<li data-newspost-id="{{feed_item.pk}}" data-feed-placement="{{forloop.counter}}">
+	<span class="label label--soft">
+		{{feed_item.publish_date}}
+	</span>
+	{% if format == "detailed" %}
+		{% for topic in feed_item.topics.all %}
+			<div class="label label--tag">{{topic.display_name}}</div>
+		{% endfor %}
+	{% endif %}
+	<div class="feed-link">
+		<a href="{{ feed_item.url }}">{{ feed_item.title }}</a>
+	</div>
+	<div class="feed-teaser" data-story_id="{{feed_item.pk}}">
+		{{ feed_item.teaser|safe  }} ...
+	</div>
+</li>

@@ -1,0 +1,62 @@
+{% extends 'wavepool/base.html' %}
+{% load static %}
+
+{% block extra_style %}
+	<link href="{% static 'css/news.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+	<div class="row">
+		<div class="spoonser">
+			<div class="col-2"></div>
+			<div class="col">
+				<a target="_blank" href="{{ad.url}}">
+					<div class="row">
+						<div class="col-4 spoonsor-image">
+							<img src="{% static 'spoonsers/' %}{{ad.logo}}" width="200px" />
+						</div>
+						<div class="col spoonsor-content">
+							<span class="spoonsor-text">This news post is brought to you by {{ad.company_name}} - {{ad.copy}}</span>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-2"></div>
+		</div>
+	</div>
+
+	{% if user.is_authenticated %}
+		<div class="row admintools">
+			<a id="edit-link" href=""><button>edit</button></a>
+		</div>
+	{% endif %}
+	<div class="row">
+		<div class="col story">
+			<span class="story-byline">
+				<div class="row">
+					<div class="label label--loud">{{newspost.publish_date}}</div>
+				</div>
+				<div class="row">
+					<h1 id="story-title">{{ newspost.title }}
+					</h1>
+				</div>
+				<div class="row">
+					<a href="{{newspost.source}}" target="_blank">See the live story at {{newspost.divesite.display_name}}
+					</a>
+				</div>
+			</span>
+			<div class="row story-content">
+				{{ newspost.body|safe }}
+			</div>
+		</div>
+	</div>
+
+	{% if newspost.tags %}
+		<div class="row">
+			Topics:
+			{% for topic in newspost.topics.all %}
+				<div class="label label--tag">{{topic.display_name}}</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'wavepool/base.html' %}
+{% load static %}
+
+{% block extra_style %}
+	<link href="{% static 'css/instructions.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+	<div id="instructions">
+		<div class="row">
+			<h1>Code Prompts</h1>
+		</div>
+
+		<div class="row">
+			<h2>Instructions</h2>
+		</div>
+		<div class="row">
+			<p>Select 2-3 of the prompts below and submit a pull request to <strong>your copy</strong> of the <code>wavepool-template</code> repository that completes as much of the request as you can.</p>
+
+			<p>For each pull request, <strong>include instructions for the reviewer to verify the behavior as well as commentary about your solutions</strong>. Code comments are highly encouraged!</p>
+
+			<p>These prompts are designed to give you an idea of the type of work you may do as an engineer here at Industry Dive and give an the hiring team an opportunity to have a technical discussion with you.</p>
+		</div>
+		{% for ticket in code_prompts %}
+			<div class="card codeprompt">
+					<div class="card-header">
+						<h1 class="card-title">{{ticket.title}}</h1>
+					</div>
+					<div class="card-body">
+						<h2 class="card-title">Objectives</h2>
+						<ul>
+							{% for obj in ticket.objectives %}
+								<li>{{obj}}</li>
+							{% endfor %}
+						</ul>
+					<h2 class="card-title">Description</h2>
+					<p class="card-text">{{ticket.description|safe}}</p>
+					<h2 class="card-title">Acceptance Criteria</h2>
+						<ul>
+						{% for ac in ticket.acceptance_criteria %}
+							<li class="instructable-ac">
+								{{ac|safe}}<br />
+							</li>
+						{% endfor %}
+						</ul>
+					{% if ticket.relevant_screenshots %}
+						<h2>Relevant Screenshots/Mocks:</h2>
+						{% for screenshot in ticket.relevant_screenshots %}
+							<span class="screenshots">
+								<div class="screenshots-screenshot">
+									<img src='{% static "image/ac_screenshots/" %}{{screenshot.source}}' />
+								</div>
+								<div class="screenshots-text">
+									{{screenshot.text}}
+								</div>
+							</span>
+						{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	{% if user_type != 'SEI' and code_reviews %}
+		<div id="instructions">
+			<div class="row">
+				<h1>Code Review</h1>
+			</div>
+
+			<div class="row">
+				<h2>Instructions</h2>
+			</div>
+			<div class="row">
+				<p>For the ticket below, a pull request has been submitted by a junior software engineer. Your task is to review the pull request and provide a critique and suggestions for improvement. We are looking for you to be mindful of code quality and adherance to the ticket's scope.</p>
+
+				<p>If you are logged in to a GitHub account, you can leave comments directly on the pull request. Otherwise, write up your review in a text document and save it for discussion.</p>
+			</div>
+			<div class="row">
+				<h2>Objectives</h2>
+			</div>
+			<div class="row">
+					<ul>
+						<li>Demonstrate ability to read and comprehend code written by another engineer</li>
+						<li>Demonstrate ability to read and comprehend user requests and acceptance criteria</li>
+						<li>Demonstrate ability to deliver feedback to another engineer</li>
+					</ul>
+			</div>
+			{% for ticket in code_reviews %}
+				<div class="card">
+	  				<div class="card-header"><h1 class="card-title">{{ticket.title}}</h1></div>
+	  				<div class="card-body">
+	  					<p class="card-text">Pull Request: <a href="{{ticket.pull_request}}">{{ticket.pull_request}}</a></p>
+		  				<p class="card-text">{{ticket.description}}</p>
+		  				<h2 class="card-title">Acceptance Criteria:</h2>
+							<ul>
+							{% for ac in ticket.acceptance_criteria %}
+								<li class="instructable-ac">
+									{{ac}}<br />
+								</li>
+							{% endfor %}
+							</ul>
+		  			</div>
+	  			</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,141 @@
+/* colors */
+$dive-red: #f94040;
+$dive-red-2: #EF3F3F;
+$dive-black: #000000;
+$dive-gray-extra-light: #F1F0F0;
+$dive-gray-light: #D2D1D1;
+$dive-gray-dark: #929090;
+$dive-gray-medium: #615F5F; 
+$dive-white: #FFFFFF;
+$dive-spoonser-blue: #288BD2;
+
+
+/* common elements */
+.label {
+	text-transform: uppercase;
+	font-size: .7rem;
+	font-weight: bold;
+	display: inline-block;
+	padding: .2rem;
+	background-color: $dive-gray-dark;
+	color: $dive-white;
+	&--soft {
+		background-color: $dive-gray-light;
+		color: $dive-gray-medium;
+	}
+	&--loud {
+		background-color: $dive-black;
+	}
+	&--tag {
+		background-color: $dive-red-2;
+		color: $dive-black;
+		margin-left: .5rem;
+		padding: .2rem .5rem;
+		&:hover {
+			background-color: $dive-gray-light;
+		}
+	}
+}
+
+.pagenav {
+	display: block;
+	width: 100%;
+	&-link {
+		display: block;
+		float: right;
+	}
+  	a {
+    	color: $dive-red;
+    	&:hover {
+    		color: $dive-black;
+    	}
+  	}
+}
+
+/* ads */
+.spoonser {
+	border: solid 2px $dive-spoonser-blue;
+	margin-bottom: 2rem;
+	padding: .5rem 0;
+	a {
+		&:hover {
+			color: initial;
+		}
+	}
+	&-content {
+		background-color: $dive-gray-light;
+	}
+	&-text {
+		margin-top: .7rem;
+		display: block;
+	}
+}
+
+
+/* feeds */
+
+.feed {
+	list-style-type: none;
+	padding: 0;
+	&--callout {
+		background-color: $dive-gray-extra-light;
+		border: solid 1px $dive-gray-light;
+		padding: 1rem;
+		margin-right: 1.2rem;
+		a {
+			font-size: 1.2rem;
+		}
+	}
+	&-link {
+		a {
+			font-size: 1rem;
+		}
+	}
+	li {
+		border-bottom: 1px solid $dive-gray-light;
+		margin: .3rem 0 1rem 0;
+		&:last-child {
+		 border-bottom: 0;
+		}
+	}
+}
+
+.search {
+	&-description {
+		width: 100%;
+		padding: 1rem 0;
+		background-color: $dive-gray-extra-light;
+		border: 1px solid $dive-gray-light;
+		border-radius: 5px;
+	}
+}
+
+/* story page */
+.story {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid $dive-gray-light;
+	h1 {
+		border-bottom: 1px solid $dive-red;
+	}
+	
+	&-byline {
+		a {
+			color: $dive-gray-dark;
+			&:hover {
+				color: $dive-red;
+			}
+		}
+	}
+
+	&-content {
+		a {
+			text-decoration: underline;
+			font-weight: normal;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+
+}

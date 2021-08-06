@@ -1,0 +1,83 @@
+/* BOOTSTRAP OVERRIDES */
+.navbar-dark .navbar-nav .nav-link {
+  color: #A9ACAF !important;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #FFFFFF !important;
+}
+
+.bg-dark {
+  background-color: #000000 !important;
+}
+
+.container {
+  padding-bottom: 5rem;
+}
+
+/* APP STYLES */
+body {
+  font-size: 1rem;
+}
+
+a {
+  color: #000;
+  font-weight: bold;
+}
+a:hover {
+  color: #b7b2b2;
+  text-decoration: none;
+}
+
+.site-name#first {
+  font-weight: bold;
+}
+.site-name#second {
+  font-weight: normal;
+  margin-left: 0.05rem;
+}
+.site-name#logo {
+  margin-top: -0.05rem;
+}
+
+#page_content {
+  margin-top: 2rem;
+}
+
+h2 {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #f94040;
+}
+
+.codeprompt ol {
+  margin-left: 40px;
+}
+
+.screenshots-screenshot {
+  border: solid 1px #A8A8A8;
+  padding: 0.5rem;
+}
+.screenshots-screenshot img {
+  max-width: 100%;
+}
+.screenshots-text {
+  color: #EC4444;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.form-multiselect {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 4px;
+  height: 100px;
+  overflow: scroll;
+  border: solid 1px #CED4DA;
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=base.css.map */

@@ -1,0 +1,47 @@
+{% extends 'wavepool/base.html' %}
+{% load static %}
+
+{% block extra_style %}
+	<link href="{% static 'css/news.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+	<div class="row">
+		<div class="col-md-4">
+			<div id="coverstory" class="row" data-newspost-id="{{cover_story.pk}}">
+				<h2>Cover story</h2>
+				<div class="row">
+					<ul class="feed feed--callout">
+						<li data-newspost-id="{{cover_story.pk}}" data-top-story-placement="{{forloop.counter}}">
+							<span class="label label--loud">
+								{{cover_story.publish_date}}
+							</span>
+							<div class="feed-link">
+								<a href="{{ cover_story.url }}">{{ cover_story.title }}</a>
+							</div>
+							<img src="{% static 'image/placeholder-img.jpg' %}"  width="300" height="175" />
+							<div class="feed-teaser" data-story_id="{{cover_story.pk}}">
+								{{ cover_story.teaser|safe  }} ...
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="topstories" class="col-md-8">
+			<div class="row"><h2>Top Stories</h2></div>
+			<div class="row">
+				{% include 'news/includes/news_feed.html' with feed=top_stories feed_id="top_stories" format="basic" %}
+			</div>
+		</div>
+	</div>
+	<div class="row"><h2>Feed</h2></div>
+	<div id="archive" class="row">
+		{% include 'news/includes/news_feed.html' with feed=recent_stories feed_id="recent_stories" format="basic" %}
+	</div>
+	<div class="row pagenav">
+		<div class="pagenav-link">
+			<a href="{% url 'newspost_archive' %}">Archive >></a>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'wavepool/base.html' %}
+{% load static %}
+
+{% block extra_style %}
+	<link href="{% static 'css/news.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+	<form id="archive-filter" method="GET">
+		<div class="form-group row">
+			<div class="col-sm-2 col-form-label">
+				<label for="topics">Filter by topic:</label>
+			</div>
+			<div class="col">
+				<ul class="form form-multiselect">
+				{% for topic in topics %}
+					<li><input type="checkbox" name="topics_{{topic.pk}}" id="id_topics_{{topic.pk}}" value="{{topic.id}}" 
+						{% if topic in selected_topics %}checked=checked{% endif %}
+						> {{topic.display_name}}</li>
+				{% endfor %}
+				</ul>
+			</div>
+			<div class="col-sm-1 col-form-label">
+				<label for="text_search">Text:</label>
+			</div>
+			<div class="col">
+				<input type="text" id="id_text_search" name="text_search" class="form-control" {% if text_search %}value="{{text_search}}" {% endif %}/>
+			</div>
+			<div class="col">
+				<input type="submit" id="id_submit" name="submit" class="btn btn-dark" value="search" />
+			</div>
+		</div>
+	</form>
+	{% if searched %}
+		<span class="search">
+			<div class="row" id="search-result-header">
+				<h2>Search Results</h2>
+			</div>
+			<div class="row search-description">
+				{% if text_search_value %}
+				<div class="col">
+					<b>Search term:</b> "{{text_search_value}}"
+				</div>
+				{% endif %}
+				{% if selected_topics %}
+				<div class="col">
+					<b>Topics:</b> {% for topic in selected_topics %}
+						<div class="label label--tag">{{topic.display_name}}</div>
+					{% endfor %}
+				</div>
+				{% endif %}
+				
+			</div>
+		</span>
+	{% else %}
+		<div class="row">
+			<h2>News Archive</h2>
+		</div>
+	{% endif %}
+	<div class="row">
+		{% include 'news/includes/news_feed.html' with feed=news_archive feed_id="archive" format="detailed" %}
+	</div>
+{% endblock %}

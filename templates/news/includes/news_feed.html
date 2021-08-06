@@ -1,0 +1,5 @@
+<ul class="feed" id="{{feed_id}}">
+	{% for feed_item in feed %}
+		{% include 'news/includes/news_feed_item.html' with format=format %}
+	{% endfor %}
+</ul>

@@ -1,0 +1,39 @@
+#instructions {
+	color: #000;
+	padding-bottom: 3rem;
+	ol {
+		padding: 0;
+		h1 {
+			font-size: 1.1rem;
+		}
+		h2 {
+			font-size: 1rem;
+			font-weight: normal;
+			text-transform: none;
+			color: #000;
+		}
+		h3{
+			font-size: .9rem;
+		}
+	}
+	li.instructable {
+		padding-bottom: 1.5rem;
+	}
+	li.instructable-ac {
+		padding-bottom: .75rem;
+	}
+}
+
+#instructions h2.card-title {
+	font-size: .9rem;
+	color: #000000;
+}
+
+#instructions h1.card-title {
+	font-size: 1.3rem;
+	margin-bottom: 0;
+}
+
+#instructions .card {
+	margin-bottom: 2rem;
+}
